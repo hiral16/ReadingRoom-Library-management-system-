@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Library Card</title>
+     <link rel="stylesheet" href="id.css">
+  </head>
+  <body>
+    <form id="LibForm" enctype="multipart/form-data">
+    <div class="form-group">
+      <br>
+      <br>
+        <label for="name">NAME:</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" required />
+    </div>
+    <br>
+    <br>
+    <div class="form-group">
+        <label for="email">EMAIL ID:</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required />
+    </div>
+      <br>
+      <br>
+    <div class="form-group">
+    <label for="regdate" id="R">REGISTRATION DATE:</label><br>
+    <input type="date" id="regdate" name="regdate">
+    </div>
+      <br>
+      <br>
+    <div class="form-group">
+    <label for="exdate">EXPIRY DATE:</label>
+    <input type="date" id="exdate" name="exdate">
+    </div>
+      <br>
+      <br>
+    <div class="form-group">
+        <label for="file">PHOTOGRAPH:</label>
+        <input type="file" class="form-control" id="file" name="file" required />
+    </div>
+    <br>
+    <br>
+    <br>
+    <input type="submit" id="submit"name="submit" class="btn btn-success submitBtn" align="center" value="APPLY NOW!"/>
+</form>
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(e){
+    $("#LibForm").on('submit', function(e){
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: 'id.php',
+            data: new FormData(this),
+            dataType: 'json',
+            contentType: false,
+            cache: false,
+            processData:false,
+            success: function(response){
+                $('.statusMsg').html('');
+                if(response.status == 1){
+                    $('#LibForm')[0].reset();
+                    $('.statusMsg').html('<p class="alert alert-success">'+response.message+'</p>');
+                }else{
+                    $('.statusMsg').html('<p class="alert alert-danger">'+response.message+'</p>');
+                }
+                $('#LibForm').css("opacity","");
+                $(".submitBtn").removeAttr("disabled");
+            }
+        });
+    });
+});
+$("#file").change(function() {
+    var file = this.files[0];
+    var fileType = file.type;
+    var match = [ 'image/jpeg', 'image/png', 'image/jpg'];
+    if(!((fileType == match[0]) || (fileType == match[1]) || (fileType == match[2]) )){
+        alert('Sorry,Only JPG, JPEG, & PNG files are allowed to upload.');
+        $("#file").val('');
+        return false;
+    }
+});
+  </script>
+</html>

@@ -1,0 +1,50 @@
+h1{
+  text-align: center;
+  text-decoration: underline;
+}
+body{
+background-image: url("BACK.jpg");
+background-repeat: no-repeat;
+  background-size: 100% 125%;
+}
+* {
+  box-sizing: border-box;
+}
+form{
+  margin-left: 855px;
+  width: 360px;
+  height:570px;
+  background-color: black;
+  color: #ffc132;
+}
+img{
+margin-left: 175px;
+opacity: 1.0;
+}
+#submit{
+  margin-left:80px;
+}
+#R{
+  margin-left: 100px;
+  width:200px;
+  clear:left;
+  text-align:left;
+  padding-right:10px;
+float: center;
+}
+label{
+    margin-left: 130px;
+    width:200px;
+    clear:left;
+    text-align:left;
+    padding-right:10px;
+  float: center;
+}
+input {
+  float: center;
+  width:200px;
+  margin-left: 80px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}

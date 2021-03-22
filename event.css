@@ -1,0 +1,19 @@
+.jqx-layout-group-auto-hide-content-vertical
+{
+    width: 200px;
+}
+#scheduler {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+body{
+  background-color: black;
+}
+h1{
+  text-align: center;
+  font-size: 3rem;
+  font-family: 'Lobster', cursive;
+}
